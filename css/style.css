@@ -506,6 +506,7 @@ label {
 	transition: none;
 }
 
+
 #tf-contact .form-control:focus {
 	border-color: inherit;
 	outline: 0;
