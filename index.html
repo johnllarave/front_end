@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Basic Page Needs
-    ================================================== -->
+<html lang="es">
+    <head>
     <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CPT - Cursos Para Todos online</title>
-    <meta name="description" content="Spirit8 is a Digital agency one page template built based on bootstrap framework. This template is design by Robert Berki and coded by Jenn Pereira. It is simple, mobile responsive, perfect for portfolio and agency websites. Get this for free exclusively at ThemeForces.com">
-    <meta name="keywords" content="bootstrap theme, portfolio template, digital agency, onepage, mobile responsive, spirit8, free website, free theme, themeforces themes, themeforces wordpress themes, themeforces bootstrap theme">
-    <meta name="author" content="ThemeForces.com">
-    
+
     <!-- Favicons
     ================================================== -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
@@ -34,17 +26,8 @@
 
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
-
-    <script type="text/javascript" src="js/modernizr.custom.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+    </head>
+    <body>
     <!-- Navigation
     ==========================================-->
     <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
@@ -105,77 +88,91 @@
                             <hr>
                         </div>
                         <div class="clearfix"></div>
-                        <p><em>Inscribete ahora a alguno de los cursos que tenemos preparados para ti diligenciando el siguiente <strong>formulario de inscripcion</strong>.</em></p>  
-                        <p><em>no debes dejar ninguna casilla en blanco puesto que nuestro sistema valida que los datos solicitados se encuentren diligenciados en su totalidad, Bienvenido.</em></p>          
+                        <p>
+                            <em>
+                                Inscribete ahora a alguno de los cursos que tenemos preparados para ti diligenciando el siguiente 
+                                <strong>
+                                    formulario de inscripcion
+                                </strong>.
+                            </em>
+                        </p>  
+                        <p>
+                            <em>
+                                No debes dejar ninguna casilla en blanco puesto que nuestro sistema valida que los datos solicitados se encuentren diligenciados en su totalidad, Bienvenido.
+                            </em>
+                        </p>          
                     </div>
 
-                    <form>
+                    <form method="POST" action="#" id="form_inscripcion" name="form_inscripcion">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombres</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese nombres">
+                                    <label>Curso de interes <span id="info"></span> </label>
+                                    <select name="curso" id="curso" class="form-control">
+                                        <option></option>
+                                        <optgroup label="Matematicas"> 
+                                            <option value="1">Introduccion a las matematicas</option> 
+                                            <option value="2">Matematicas nivel medio</option> 
+                                            <option value="3">Matematicas avanzado</option> 
+                                        </optgroup> 
+                                        <optgroup label="Informatica"> 
+                                            <option value="4">Programacion basica</option> 
+                                            <option value="5">Diseño web</option> 
+                                            <option value="6">Arquitectura de computadores</option> 
+                                        </optgroup> 
+                                        <optgroup label="Idiomas"> 
+                                            <option value="7">Ingles para principiantes</option> 
+                                            <option value="8">Introduccion a la lengua francesa</option> 
+                                            <option value="9">Portugues para empresarios</option> 
+                                            <option value="10">Introduccion a la lengua italiana</option>
+                                        </optgroup> 
+                                        <optgroup label="Diseño e innovacion"> 
+                                            <option value="11">Design thinking para jovenes</option> 
+                                            <option value="12">Desarrollo de la mente creativa</option> 
+                                        </optgroup> 
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Apellidos</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese apellidos">
+                                    <label>Nombres</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Telefono</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefono">
+                                    <label>Apellidos</label>
+                                    <input type="text" class="form-control" name="apellido" id="apellido" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Direccion</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Direccion">
+                                    <label>Correo</label>
+                                    <input type="email" class="form-control" name="correo" id="correo" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Correo electronico</label>
-                                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Correo">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" name="telefono" id="telefono" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input type="text" class="form-control" name="ciudad" id="ciudad" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Curso de interes</label>
-                            <select name="Cursos" class="form-control">
-                                <option selected value="0"> Selecciona curso</option>
-                                <optgroup label="Matematicas"> 
-                                    <option value="1">Introduccion a las matematicas</option> 
-                                    <option value="2">Matematicas nivel medio</option> 
-                                    <option value="3">Matematicas avanzado</option> 
-                                </optgroup> 
-                                <optgroup label="Informatica"> 
-                                    <option value="4">Programacion basica</option> 
-                                    <option value="5">Diseño web</option> 
-                                    <option value="6">Arquitectura de computadores</option> 
-                                </optgroup> 
-                                <optgroup label="Idiomas"> 
-                                    <option value="7">Ingles para principiantes</option> 
-                                    <option value="8">Introduccion a la lengua francesa</option> 
-                                    <option value="9">Portugues para empresarios</option> 
-                                    <option value="10">Introduccion a la lengua italiana</option>
-                                </optgroup> 
-                                <optgroup label="Diseño e innovacion"> 
-                                    <option value="11">Design thinking para jovenes</option> 
-                                    <option value="12">Desarrollo de la mente creativa</option> 
-                                </optgroup> 
-                            </select>
-                            
-                        </div>
-                        
-                        <button type="text" class="btn tf-btn btn-default">Submit</button>
+                        <label>
+                            ¿Acepta nuestra politíca de tratamiento de la información personal? 
+                            <a href="https://github.com/johnllarave/front_end" target="_blank">Consultar!</a> 
+                            <input type="checkbox" name="acepta" id="acepta" value="1">
+                        </label>
+                        <button type="submit" class="btn tf-btn btn-default" id="btn_envia" name="insert" disabled>Inscribirse</button>
                     </form>
-
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -194,7 +191,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div id="testimonial" class="owl-carousel owl-theme">
                             <div class="item">
-                                <h5>La organizacion <strong><span class="color">Cursos para todos</span></strong> (CPT) tiene plena libertad de cancelar los cursos en que no haya suficientes personas inscritas o por causas ajenas a nuestra voluntad, como puede ser la enfermedad del instructor</h5>
+                                <h5>La organizacion <strong><span class="color">Cursos para todos</span></strong> (CPT) tiene plena libertad de cancelar los cursos que no haya suficientes personas inscritas o por causas ajenas a nuestra voluntad, como puede ser la enfermedad del instructor</h5>
                                 <p><strong>Pautas y reglamentos</strong>, Cursos para todos online 2020</p>
                             </div>
 
@@ -208,7 +205,7 @@
                                 <p><strong>Pautas y reglamentos</strong>, Cursos para todos online 2020</p>
                             </div>
                             <div class="item">
-                                <h5>Algunas veces por problemas de seguridad en los servidores no nos llega su formulario de inscripción . Por esa razón, el sistema le enviará una copia del formulario para que en caso de ser necesario usted nos lo envíe vía correo electrónico.</h5>
+                                <h5>Algunas veces por problemas de seguridad en los servidores no nos llega su formulario de inscripción. Por esa razón, el sistema le enviará una copia del formulario para que en caso de ser necesario usted nos lo envíe vía correo electrónico.</h5>
                                 <p><strong>Pautas y reglamentos</strong>, Cursos para todos online 2020</p>
                             </div>
                         </div>
@@ -218,12 +215,13 @@
         </div>
     </div>
 
-    
-
     <nav id="footer">
         <div class="container">
             <div class="pull-left fnav">
-                <p>Derechos reservados. Politecnico gran colombiano © 2020. Desarrollado por <a href="https://github.com/johnllarave/front_end">John Alexander Llarave Herrán </a> and <a href="https://github.com/johnllarave/front_end"> Juan Camilo Arias Moque</a></p>
+                <p>Derechos reservados. Politecnico gran colombiano © 2020. Desarrollado por 
+                    <a href="https://github.com/johnllarave/front_end">John Alexander Llarave Herrán </a> and 
+                    <a href="https://github.com/johnllarave/front_end"> Juan Camilo Arias Moque</a>
+                </p>
             </div>
             <div class="pull-right fnav">
                 <ul class="footer-social">
@@ -236,6 +234,7 @@
         </div>
     </nav>
 
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -250,6 +249,99 @@
     <!-- Javascripts
     ================================================== -->
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/plugins/jquery.validate.js"></script>
 
-  </body>
+    <script>
+        $(document).ready(function () {
+            $("#form_inscripcion").validate({
+                rules: {
+                    curso: {
+                        required: true
+                    },
+
+                    nombre: {
+                        required: true
+                    },
+
+                    apellido: {
+                        required: true
+                    },
+
+                    correo: {
+                        required: true,
+                        email: true
+                    },
+
+                    telefono: {
+                        required: true
+                    },
+
+                    ciudad: {
+                        required: true
+                    }
+                },
+            });
+
+            $("#acepta").click(function(){
+                if (document.getElementById("acepta").checked) {
+                    document.form_inscripcion.btn_envia.disabled = false;
+                } else {
+                    document.form_inscripcion.btn_envia.disabled = true;
+                }
+            });
+
+            $("#curso").change(function () {
+                $("#curso option:selected").each(function () {
+                    curso = $(this).val();
+
+                    //SWITCH temporal mientras se realiza el desarrollo
+                    //y se trae la información de la base de datos
+                    switch (curso) {
+                        case "1":
+                            $("#info").html("(Fecha: 2020-10-10 Hora: 12:00)");
+                        break;
+                        case "2":
+                            $("#info").html("(Fecha: 2020-10-10 Hora: 13:00)");
+                        break;
+                        case "3":
+                            $("#info").html("(Fecha: 2020-10-10 Hora: 14:00)");
+                        break;
+                        case "4":
+                            $("#info").html("(Fecha: 2020-10-11 Hora: 12:00)");
+                        break;
+                        case "5":
+                            $("#info").html("(Fecha: 2020-10-11 Hora: 13:00)");
+                        break;
+                        case "6":
+                            $("#info").html("(Fecha: 2020-10-11 Hora: 14:00)");
+                        break;
+                        case "7":
+                            $("#info").html("(Fecha: 2020-10-13 Hora: 12:00)");
+                        break;
+                        case "8":
+                            $("#info").html("(Fecha: 2020-10-13 Hora: 13:00)");
+                        break;
+                        case "9":
+                            $("#info").html("(Fecha: 2020-10-13 Hora: 14:00)");
+                        break;
+                        case "10":
+                            $("#info").html("(Fecha: 2020-10-13 Hora: 15:00)");
+                        break;
+                        case "11":
+                            $("#info").html("(Fecha: 2020-10-14 Hora: 12:00)");
+                        break;
+                        case "12":
+                            $("#info").html("(Fecha: 2020-10-14 Hora: 14:00)");
+                        break;
+                        default:
+                            $("#info").html("(No hay curso)");
+                        break;
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    </body>
 </html>
