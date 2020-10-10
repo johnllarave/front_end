@@ -20,45 +20,8 @@
 
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="inicio.php">ADMINISTRACIÓN DEL CPT</a>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <h4 class="dropdown-toggle"> John Alexander Llarave Herrán</h4>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i>Salir</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <br>
-                            <li>
-                                <a href="inicio.html"><i class="fa fa-home"></i>Inicio</a>
-                            </li>
-                            <li>
-                                <a href="cursos.html"><i class="fa fa-file-text-o"></i> Cursos</a>
-                            </li>
-                            
-                            <li>
-                                <a href="reportes.html"><i class="fa fa-file-excel-o"></i> Reportes</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php include 'menu_superior.php';?>
+                <?php include 'menu_lateral.php';?>                
             </nav>
             <div id="page-wrapper">
                 <div class="row">

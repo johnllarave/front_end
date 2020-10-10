@@ -1,3 +1,16 @@
+<?php
+
+include 'config.php';
+
+$query = "SELECT cu_id, cu_nombre FROM curso WHERE cu_estado = '1'";
+$result = $conexion->query($query) or die(mysqli_errno($conexion) . ": " . mysqli_error($conexion) . " ");
+
+while ($row_curso = $result->fetch_assoc()) {
+    $curso .= '<option value="'.$row_curso['cu_id'].'">'.$row_curso['cu_nombre'].'</option>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -40,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><strong><span class="color">C</span></strong><small>ursos</small>
+          <a class="navbar-brand" href="index.php"><strong><span class="color">C</span></strong><small>ursos</small>
             <strong><span class="color">P</span></strong><small>ara</small><strong><span class="color">T</span></strong><small>odos</small>
           </a>
         </div>
@@ -51,7 +64,7 @@
             <li><a href="#tf-home" class="page-scroll">Inicio</a></li>
             <li><a href="#tf-contact" class="page-scroll">Inscripcion</a></li>
             <li><a href="#tf-testimonials" class="page-scroll">Pautas</a></li>
-            <li><a href="login.html" class="page-scroll">Admin</a></li>
+            <li><a href="admin.php" class="page-scroll">Admin</a></li>
             
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -103,64 +116,44 @@
                         </p>          
                     </div>
 
-                    <form method="POST" action="#" id="form_inscripcion" name="form_inscripcion">
+                    <form method="POST" action="consultas.php" id="form_inscripcion" name="form_inscripcion">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Curso de interes <span id="info"></span> </label>
                                     <select name="curso" id="curso" class="form-control">
-                                        <option></option>
-                                        <optgroup label="Matematicas"> 
-                                            <option value="1">Introduccion a las matematicas</option> 
-                                            <option value="2">Matematicas nivel medio</option> 
-                                            <option value="3">Matematicas avanzado</option> 
-                                        </optgroup> 
-                                        <optgroup label="Informatica"> 
-                                            <option value="4">Programacion basica</option> 
-                                            <option value="5">Diseño web</option> 
-                                            <option value="6">Arquitectura de computadores</option> 
-                                        </optgroup> 
-                                        <optgroup label="Idiomas"> 
-                                            <option value="7">Ingles para principiantes</option> 
-                                            <option value="8">Introduccion a la lengua francesa</option> 
-                                            <option value="9">Portugues para empresarios</option> 
-                                            <option value="10">Introduccion a la lengua italiana</option>
-                                        </optgroup> 
-                                        <optgroup label="Diseño e innovacion"> 
-                                            <option value="11">Design thinking para jovenes</option> 
-                                            <option value="12">Desarrollo de la mente creativa</option> 
-                                        </optgroup> 
+                                        <?php echo $curso;?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nombres</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                    <input type="text" class="form-control" name="nombre" id="nombre">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Apellidos</label>
-                                    <input type="text" class="form-control" name="apellido" id="apellido" required>
+                                    <input type="text" class="form-control" name="apellido" id="apellido">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Correo</label>
-                                    <input type="email" class="form-control" name="correo" id="correo" required>
+                                    <input type="email" class="form-control" name="correo" id="correo">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Teléfono</label>
-                                    <input type="text" class="form-control" name="telefono" id="telefono" required>
+                                    <input type="text" class="form-control" name="telefono" id="telefono">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Ciudad</label>
-                                    <input type="text" class="form-control" name="ciudad" id="ciudad" required>
+                                    <input type="text" class="form-control" name="ciudad" id="ciudad">
                                 </div>
                             </div>
                         </div>
@@ -169,7 +162,7 @@
                             <a href="https://github.com/johnllarave/front_end" target="_blank">Consultar!</a> 
                             <input type="checkbox" name="acepta" id="acepta" value="1">
                         </label>
-                        <button type="submit" class="btn tf-btn btn-default" id="btn_envia" name="insert" disabled>Inscribirse</button>
+                        <button type="submit" class="btn tf-btn btn-default" id="btn_envia" name="btn_inscripcion" disabled>Inscribirse</button>
                     </form>
                 </div>
             </div>

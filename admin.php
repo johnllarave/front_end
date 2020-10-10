@@ -24,7 +24,7 @@
                             <h2>Inicio de sesión</h2>
                         </div>
                         <div class="panel-body">
-                            <form action="inicio.html" method="POST" id="valida_datos">
+                            <form action="login.php" method="POST" id="valida_datos">
                                 <div class="form-group">
                                     <label for="usuario"></label>
                                     <input type="text" class="form-control" name="user" id="user" placeholder="Usuario" required autofocus>
