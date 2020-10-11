@@ -21,7 +21,7 @@
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <?php include 'menu_superior.php';?>
-                <?php include 'menu_lateral.php';?>                
+                <?php include 'menu_lateral.php';?>
             </nav>
             <div id="page-wrapper">
                 <div class="row">

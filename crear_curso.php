@@ -1,3 +1,37 @@
+<?php
+
+include 'config.php';
+
+if (isset($_POST['btn_edita_curso'])) {
+    $id = mysqli_real_escape_string($conexion, $_POST['id']);
+
+    $query = "SELECT * FROM curso WHERE cu_id = ".$id."";
+    $result = $conexion->query($query) or die(mysqli_errno($conexion) . ": " . mysqli_error($conexion) . " ");
+
+    $info = $result->fetch_array();
+
+    if ($info['cu_estado'] == '1') {
+        $opcion = '<option value="1" selected>Activo</option>
+                   <option value="0">Inactivo</option>';
+    } else {
+        $opcion = '<option value="1">Activo</option>
+                   <option value="0" selected>Inactivo</option>';
+    }
+
+    $div_estado =  '<div class="form-group col-lg-12">
+                        <label>Estado</label>
+                        <input type="hidden" name="id" value="'.$id.'">
+                        <select name="estado" class="form-control">
+                            '.$opcion.'
+                        </select>
+                    </div>';
+
+    $opcion_btn = '<input type="submit" class="btn btn-success" value="Editar" name="btn_edita">';
+} else {
+    $opcion_btn = '<input type="submit" class="btn btn-success" value="Guardar" name="btn_curso">';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,77 +54,42 @@
 
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="inicio.php">ADMINISTRACIÓN DEL CPT</a>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <h4 class="dropdown-toggle"> John Alexander Llarave Herrán</h4>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i>Salir</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <br>
-                            <li>
-                                <a href="inicio.html"><i class="fa fa-home"></i>Inicio</a>
-                            </li>
-                            <li>
-                                <a href="cursos.html"><i class="fa fa-file-text-o"></i> Cursos</a>
-                            </li>
-                            
-                            <li>
-                                <a href="reportes.html"><i class="fa fa-file-excel-o"></i> Reportes</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php include 'menu_superior.php';?>
+                <?php include 'menu_lateral.php';?>
             </nav>
             <div id="page-wrapper"><br>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="cursos.html"><button type="button" class="btn btn-success">Regresar</button></a>
+                        <a href="cursos.php"><button type="button" class="btn btn-success">Regresar</button></a>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="ibox-content">
-                                <form action="#" method="POST" id="valida_datos">
+                                <form action="consultas.php" method="POST" id="valida_datos">
                                     <div class="form-group col-lg-12">
-                                        <label for="pass_validar">Nombre del curso</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                        <label>Nombre del curso</label>
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $info['cu_nombre'];?>" required>
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label for="pass_validar">Área</label>
-                                        <input type="text" class="form-control" name="area" id="area" required>
+                                        <label>Área</label>
+                                        <input type="text" class="form-control" name="area" id="area" value="<?php echo $info['cu_area'];?>" required>
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label for="pass_validar">Fecha</label>
-                                        <input type="date" class="form-control" name="fecha" id="fecha" required>
+                                        <label>Fecha</label>
+                                        <input type="date" class="form-control" name="fecha" id="fecha" value="<?php echo $info['cu_fecha'];?>" required>
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label for="pass_validar">Hora</label>
-                                        <input type="time" class="form-control" name="hora" id="hora" required>
+                                        <label>Hora</label>
+                                        <input type="time" class="form-control" name="hora" id="hora" value="<?php echo $info['cu_hora'];?>" required>
                                     </div>
+
+                                    <?php echo $div_estado;?>
 
                                     <div class="form-group col-lg-6">
-                                        <input type="submit" class="btn btn-success" value="Guardar" name="<?php echo $op;?>">
+                                        <?php echo $opcion_btn;?>
                                     </div>
                                 </form>
                             </div>

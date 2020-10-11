@@ -5,10 +5,20 @@ include 'config.php';
 $query = "SELECT cu_id, cu_nombre FROM curso WHERE cu_estado = '1'";
 $result = $conexion->query($query) or die(mysqli_errno($conexion) . ": " . mysqli_error($conexion) . " ");
 
+$curso = "<option></option>";
 while ($row_curso = $result->fetch_assoc()) {
     $curso .= '<option value="'.$row_curso['cu_id'].'">'.$row_curso['cu_nombre'].'</option>';
 }
 
+
+if (isset($_GET['ok'])) {
+?>
+    <script>
+        alert("Usted ha sido registrado para el curso, la información de inscripción ha sido enviada al correo electronico registrado, recuerde validar su bandeja de correos no deseados");
+        window.location.replace("index.php");
+    </script>
+<?php
+}
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +126,7 @@ while ($row_curso = $result->fetch_assoc()) {
                         </p>          
                     </div>
 
-                    <form method="POST" action="consultas.php" id="form_inscripcion" name="form_inscripcion">
+                    <form method="POST" action="correo_inscripcion.php" id="form_inscripcion" name="form_inscripcion">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -286,50 +296,10 @@ while ($row_curso = $result->fetch_assoc()) {
             $("#curso").change(function () {
                 $("#curso option:selected").each(function () {
                     curso = $(this).val();
-
-                    //SWITCH temporal mientras se realiza el desarrollo
-                    //y se trae la información de la base de datos
-                    switch (curso) {
-                        case "1":
-                            $("#info").html("(Fecha: 2020-10-10 Hora: 12:00)");
-                        break;
-                        case "2":
-                            $("#info").html("(Fecha: 2020-10-10 Hora: 13:00)");
-                        break;
-                        case "3":
-                            $("#info").html("(Fecha: 2020-10-10 Hora: 14:00)");
-                        break;
-                        case "4":
-                            $("#info").html("(Fecha: 2020-10-11 Hora: 12:00)");
-                        break;
-                        case "5":
-                            $("#info").html("(Fecha: 2020-10-11 Hora: 13:00)");
-                        break;
-                        case "6":
-                            $("#info").html("(Fecha: 2020-10-11 Hora: 14:00)");
-                        break;
-                        case "7":
-                            $("#info").html("(Fecha: 2020-10-13 Hora: 12:00)");
-                        break;
-                        case "8":
-                            $("#info").html("(Fecha: 2020-10-13 Hora: 13:00)");
-                        break;
-                        case "9":
-                            $("#info").html("(Fecha: 2020-10-13 Hora: 14:00)");
-                        break;
-                        case "10":
-                            $("#info").html("(Fecha: 2020-10-13 Hora: 15:00)");
-                        break;
-                        case "11":
-                            $("#info").html("(Fecha: 2020-10-14 Hora: 12:00)");
-                        break;
-                        case "12":
-                            $("#info").html("(Fecha: 2020-10-14 Hora: 14:00)");
-                        break;
-                        default:
-                            $("#info").html("(No hay curso)");
-                        break;
-                    }
+                    //alert(curso);
+                    $.post("consultas.php", { curso: curso, cascada: 1}, function(html){
+                        $("#info").html(html);
+                    });
                 });
             });
         });

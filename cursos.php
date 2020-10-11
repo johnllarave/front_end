@@ -1,3 +1,35 @@
+<?php
+
+include 'config.php';
+
+$query = "SELECT cu_id, cu_nombre, cu_area, cu_fecha, cu_hora, cu_estado
+          FROM curso";
+$result = $conexion->query($query) or die(mysqli_errno($conexion) . ": " . mysqli_error($conexion) . " ");
+
+while ($row_curso = $result->fetch_assoc()) {
+    if ($row_curso['cu_estado'] == '1') {
+        $estado = "Activo";
+    } else {
+        $estado = "Inactivo";
+    }
+
+    $tabla .= "<tr>";
+    $tabla .= "<td>" . $row_curso['cu_nombre'] . "</td>";
+    $tabla .= "<td>" . $row_curso['cu_area'] . "</td>";
+    $tabla .= "<td>" . $row_curso['cu_fecha'] . "</td>";
+    $tabla .= "<td>" . $row_curso['cu_hora'] . "</td>";
+    $tabla .= "<td>" . $estado . "</td>";
+    $tabla .= "<td>
+                <form method='POST' action='crear_curso.php'>
+                    <input type='hidden' name='id' value='".$row_curso['cu_id']."'>
+                    <button type='submit' class='btn tf-btn btn-link' name='btn_edita_curso'><i class='fa fa-edit'></i></button>
+                </form>
+              </td>";
+    $tabla .= "</tr>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,50 +52,13 @@
 
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="inicio.php">ADMINISTRACIÓN DEL CPT</a>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <h4 class="dropdown-toggle"> John Alexander Llarave Herrán</h4>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i>Salir</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <br>
-                            <li>
-                                <a href="inicio.html"><i class="fa fa-home"></i>Inicio</a>
-                            </li>
-                            <li>
-                                <a href="cursos.html"><i class="fa fa-file-text-o"></i> Cursos</a>
-                            </li>
-                            
-                            <li>
-                                <a href="reportes.html"><i class="fa fa-file-excel-o"></i> Reportes</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php include 'menu_superior.php';?>
+                <?php include 'menu_lateral.php';?>
             </nav>
             <div id="page-wrapper"><br>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="crear_curso.html"><button type="button" class="btn btn-success">Crear curso</button></a>
+                        <a href="crear_curso.php"><button type="button" class="btn btn-success">Crear curso</button></a>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -81,102 +76,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Introduccion a las matematicas</td>
-                                                <td>Matematicas</td>
-                                                <td>2020-10-10</td>
-                                                <td>12:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Matematicas nivel medio</td>
-                                                <td>Matematicas</td>
-                                                <td>2020-10-10</td>
-                                                <td>13:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Matematicas avanzado</td>
-                                                <td>Matematicas</td>
-                                                <td>2020-10-10</td>
-                                                <td>14:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Programacion basica</td>
-                                                <td>Informatica</td>
-                                                <td>2020-10-11</td>
-                                                <td>12:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Diseño web</td>
-                                                <td>Informatica</td>
-                                                <td>2020-10-11</td>
-                                                <td>13:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arquitectura de computadores</td>
-                                                <td>Informatica</td>
-                                                <td>2020-10-11</td>
-                                                <td>14:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ingles para principiantes</td>
-                                                <td>Idiomas</td>
-                                                <td>2020-10-13</td>
-                                                <td>12:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Introduccion a la lengua francesa</td>
-                                                <td>Idiomas</td>
-                                                <td>2020-10-13</td>
-                                                <td>13:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Portugues para empresarios</td>
-                                                <td>Idiomas</td>
-                                                <td>2020-10-13</td>
-                                                <td>14:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Introduccion a la lengua italiana</td>
-                                                <td>Idiomas</td>
-                                                <td>2020-10-13</td>
-                                                <td>15:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Design thinking para jovenes</td>
-                                                <td>Diseño e innovacion</td>
-                                                <td>2020-10-14</td>
-                                                <td>12:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Desarrollo de la mente creativa</td>
-                                                <td>Diseño e innovacion</td>
-                                                <td>2020-10-14</td>
-                                                <td>14:00</td>
-                                                <td>Activo</td>
-                                                <td><i class="fa fa-edit"></i></td>
-                                            </tr>
+                                            <?php
+                                                echo $tabla;
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

@@ -14,5 +14,5 @@ $conexion -> set_charset("utf8");
 $fechas = new DateTime("now", new DateTimeZone('America/Bogota'));
 $fecha = $fechas->format('Y-m-d H:i:s');
 
-$url_aplicacion = "http://localhost/";
+$url_aplicacion = "http://localhost/front_end/";
 ?>
