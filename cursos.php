@@ -95,23 +95,6 @@ while ($row_curso = $result->fetch_assoc()) {
         <script src="js/plugins/sb-admin-2.js"></script>
         <script src="js/plugins/datatables.min.js"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('#tabla').DataTable( {
-                    pageLength: 10,
-                    responsive: true,
-                    dom: '<"html5buttons"B>lTfgitp',
-                    buttons: [
-                        //{extend: 'copy'},
-                        {extend: 'csv'},
-                        {extend: 'excel', title: 'reporte'},
-                        //{extend: 'pdf', title: 'ExampleFile'},
-                    ],
-                    "language": {
-                        "url": "js/plugins/Spanish.json"
-                    }
-                });
-            });
-        </script>
+        <?php include 'config_table.php';?>
     </body>
 </html>

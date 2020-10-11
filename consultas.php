@@ -2,24 +2,6 @@
 
 include 'config.php';
 
-/*if (isset($_POST['btn_inscripcion'])) {
-	$curso = mysqli_real_escape_string($conexion, $_POST['curso']);
-	$nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
-	$apellido = mysqli_real_escape_string($conexion, $_POST['apellido']);
-	$correo = mysqli_real_escape_string($conexion, $_POST['correo']);
-	$telefono = mysqli_real_escape_string($conexion, $_POST['telefono']);
-	$ciudad = mysqli_real_escape_string($conexion, $_POST['ciudad']);
-	$acepta = mysqli_real_escape_string($conexion, $_POST['acepta']);
-
-	$insert = " INSERT INTO inscripcion (ins_nombre, ins_apellido, ins_correo, ins_telefono, ins_ciudad, ins_terminos, ins_fecha_inscripcion, cu_id)
-                VALUES ('".$nombre."','".$apellido."','".$correo."','".$telefono."','".$ciudad."','".$acepta."','".$fecha."', '".$curso."')";
-    $conexion->query($insert) or die(mysqli_errno($conexion) . ": " . mysqli_error($conexion) . " ");
-
-    header("location:index.php?ok");
-
-
-}*/
-
 if (isset($_POST['btn_curso'])) {
 	$nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
 	$area = mysqli_real_escape_string($conexion, $_POST['area']);
