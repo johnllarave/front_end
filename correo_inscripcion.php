@@ -63,7 +63,7 @@ Class NewCorreo {
 		$address = "app.cursos@gmail.com";
 		$asunto = $this->arrary_report["asunto"];
 		$alert_mails_list = $this->arrary_report["correo"];
-		$mail_user_name = "correoingsoftwarepoli@gmail.com";
+		$mail_user_name = "####";
 
 		$mail_password = "####";
 		$mail_host = "smtp.gmail.com";
