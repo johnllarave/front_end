@@ -65,7 +65,7 @@ Class NewCorreo {
 		$alert_mails_list = $this->arrary_report["correo"];
 		$mail_user_name = "correoingsoftwarepoli@gmail.com";
 
-		$mail_password = "P0l1_jOhn_lL4r4v3";
+		$mail_password = "####";
 		$mail_host = "smtp.gmail.com";
 
 		$mailer = new Mailer(true);
